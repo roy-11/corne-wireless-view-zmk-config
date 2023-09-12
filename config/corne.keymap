@@ -9,6 +9,15 @@
 #include <dt-bindings/zmk/keys.h>
 
 / {
+    macros {
+        copy_mode_in_tmux: copy_mode_in_tmux {
+            compatible = "zmk,behavior-macro";
+            label = "COPY_MODE_IN_TMUX";
+            #binding-cells = <0>;
+            bindings = <&kp LC(B) &kp LEFT_BRACKET>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -37,10 +46,10 @@
 
             label = "Lower";
             bindings = <
-&kp TAB     &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6       &kp N7    &kp N8    &kp N9     &kp N0    &kp BSPC
-&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT     &kp DOWN  &kp UP    &kp RIGHT  &kp SEMI  &kp SQT
-&kp LSHFT   &trans        &trans        &trans        &trans        &trans          &trans       &trans    &trans    &trans     &trans    &kp RIGHT_SHIFT
-                                        &kp LGUI      &trans        &kp SPACE       &kp LG(RET)  &trans    &kp RALT
+&kp TAB           &kp N1        &kp N2        &kp N3        &kp N4        &kp N5          &kp N6         &kp N7    &kp N8    &kp N9     &kp N0              &kp BSPC
+&kp LEFT_CONTROL  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LEFT       &kp DOWN  &kp UP    &kp RIGHT  &copy_mode_in_tmux  &kp LA(LG(I))
+&kp LSHFT         &trans        &trans        &trans        &trans        &trans          &trans         &trans    &trans    &trans     &trans              &kp RIGHT_SHIFT
+                                              &kp LGUI      &mo 1         &kp SPACE       &kp LG(SPACE)  &mo 2     &kp RALT
             >;
         };
 
@@ -53,11 +62,29 @@
 
             label = "Raise";
             bindings = <
-&kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET    &kp AMPS        &kp KP_MULTIPLY  &kp LPAR          &kp RPAR           &kp BSPC
-&kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp GRAVE    &kp MINUS       &kp PLUS         &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp PIPE
-&kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp TILDE    &kp UNDERSCORE  &kp EQUAL        &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp BACKSLASH
-                             &kp LGUI  &trans    &kp SPACE    &kp LG(RET)  &trans          &kp RALT
+&kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT    &kp CARET      &kp AMPS        &kp KP_MULTIPLY  &kp LPAR          &kp RPAR           &kp BSPC
+&kp LCTRL  &trans    &trans  &trans    &trans    &trans       &kp GRAVE      &kp MINUS       &kp PLUS         &kp LEFT_BRACE    &kp RIGHT_BRACE    &kp PIPE
+&kp LSHFT  &trans    &trans  &trans    &trans    &trans       &kp TILDE      &kp UNDERSCORE  &kp EQUAL        &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp BACKSLASH
+                             &kp LGUI  &mo 1     &kp SPACE    &kp LG(SPACE)  &mo 2           &kp RALT
             >;
+        };
+
+        layer_3 {
+            bindings = <
+&bt BT_CLR  &kp LS(LG(NUMBER_1))  &kp LS(LG(NUMBER_2))  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_4))  &kp LS(LG(N5))    &kp C_BRI_DEC         &kp C_BRI_INC   &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp LC(LS(GRAVE))
+&bt BT_NXT  &kp LC(NUMBER_1)      &kp LC(NUMBER_2)      &kp LC(NUMBER_3)      &kp LC(NUMBER_4)      &kp LC(N5)        &kp LC(NUMBER_6)      &kp LC(N7)      &kp LC(N8)      &kp LC(N9)         &kp LC(N0)       &kp LC(UP_ARROW)
+&bt BT_PRV  &kp LS(LA(NUMBER_1))  &kp LS(LA(NUMBER_2))  &kp LS(LA(NUMBER_3))  &kp LS(LA(NUMBER_4))  &kp LS(LA(N5))    &kp LS(LA(NUMBER_6))  &kp LS(LA(N7))  &kp LS(LA(N8))  &kp LS(LA(N8))     &kp LS(LA(N9))   &kp LC(DOWN_ARROW)
+                                                        &kp LGUI              &mo 1                 &kp SPACE         &kp LG(SPACE)         &mo 2           &kp RALT
+            >;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        changeToLayer3 {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 };
