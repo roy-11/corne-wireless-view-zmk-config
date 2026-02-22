@@ -71,10 +71,10 @@
 
         layer_3 {
             bindings = <
-&bt BT_CLR  &kp LS(LG(NUMBER_1))  &kp LS(LG(NUMBER_2))  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_4))  &kp LS(LG(N5))    &kp C_BRI_DEC         &kp C_BRI_INC   &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp LC(LS(GRAVE))
-&bt BT_NXT  &kp LC(NUMBER_1)      &kp LC(NUMBER_2)      &kp LC(NUMBER_3)      &kp LC(NUMBER_4)      &kp LC(N5)        &kp LC(NUMBER_6)      &kp LC(N7)      &kp LC(N8)      &kp LC(N9)         &kp LC(N0)       &kp LC(UP_ARROW)
-&bt BT_PRV  &kp LS(LA(NUMBER_1))  &kp LS(LA(NUMBER_2))  &kp LS(LA(NUMBER_3))  &kp LS(LA(NUMBER_4))  &kp LS(LA(N5))    &kp LS(LA(NUMBER_6))  &kp LS(LA(N7))  &kp LS(LA(N8))  &kp LS(LA(N8))     &kp LS(LA(N9))   &kp LC(DOWN_ARROW)
-                                                        &kp LGUI              &mo 1                 &kp SPACE         &kp LG(SPACE)         &mo 2           &kp RALT
+&bt BT_CLR  &kp LS(LG(NUMBER_1))  &kp LS(LG(NUMBER_2))  &kp LS(LG(NUMBER_3))  &kp LS(LG(NUMBER_4))  &kp LS(LG(N5))    &kp C_BRI_DEC  &kp C_BRI_INC  &kp K_MUTE  &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp LC(LS(GRAVE))
+&bt BT_NXT  &kp F1                &kp F2                &kp F3                &kp F4                &kp F5            &kp F6         &kp F7         &kp F8      &kp F9             &kp F10          &kp LC(UP_ARROW)
+&bt BT_PRV  &kp F11               &kp F12               &kp F13               &kp F14               &kp F15           &kp F16        &kp F17        &kp F18     &kp F19            &kp F20          &kp LC(DOWN_ARROW)
+                                                        &kp LGUI              &mo 1                 &kp SPACE         &kp LG(SPACE)  &mo 2          &kp RALT
             >;
         };
     };
